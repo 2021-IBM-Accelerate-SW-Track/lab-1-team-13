@@ -7,7 +7,7 @@ import { TextField, Checkbox } from '@material-ui/core';
 const App = () => {
 
   const [todolist, updatetodolist] = useState([]);
-  let currID = 0; // current highest (newest) id for to-do list items
+  let [currID, setID] = useState(0); // current highest (newest) id for to-do list items
 
   const loadList = () => {
 
@@ -16,13 +16,13 @@ const App = () => {
   const makeNewToDoListItem = () => {
     let currentDate = new Date();
     let time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
+    setID(currID + 1);
     let newToDoListItem = {
       id: currID,
       date: time,
       name: 'Untitled',
       status: 'incomplete',
     }
-    currID++;
     return newToDoListItem;
   };
 
@@ -32,13 +32,15 @@ const App = () => {
     updatetodolist(currentlist);
   };
 
-    return (
-      <div className="App" >
-        <Header/>
-        <Table addNewItem={addNewToDoListItem} todolist={todolist}/>
-      
-      </div>
-    );
+
+
+  return (
+    <div className="App" >
+      <Header />
+      <Table addNewItem={addNewToDoListItem} todolist={todolist} />
+
+    </div>
+  );
 }
 
 export default App;
