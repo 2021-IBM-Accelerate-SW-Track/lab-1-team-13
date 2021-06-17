@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Grid, Checkbox } from '@material-ui/core';
+import { Grid, Checkbox, TextField } from '@material-ui/core';
+import TableText from "./tableText.js";
 
 const TableEntry = (props) => {
   console.log(props.item);
@@ -10,7 +11,7 @@ const TableEntry = (props) => {
           <Checkbox onClick={() => props.markComplete(props.item)} />
         </Grid>
         <Grid item xs={4}>
-          {props.item.name}
+          <TableText name={props.item.name} validateItem={props.validateItem} id={props.item.id} />
         </Grid>
         <Grid item xs={3}>
           {props.item.date}

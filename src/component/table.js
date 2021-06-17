@@ -21,7 +21,7 @@ const Table = (props) => {
     items ? <div> <Button onClick={props.addNewItem}>Add New Item</Button>
       {
         items.map((item, index) => (
-          <TableEntry key={item.id} item={item} markComplete={markComplete} />
+          <TableEntry key={item.id} item={item} markComplete={markComplete} validateItem={props.validateItem} />
         ))
       }
     </div> : <div> <Button onClick={props.addNewItem}>Add New Item</Button> </div>

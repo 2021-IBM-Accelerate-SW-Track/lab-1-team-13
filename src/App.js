@@ -32,12 +32,20 @@ const App = () => {
     updatetodolist(currentlist);
   };
 
+  const validateItem = (value, id) => {
+    let newItem = todolist.find(item => item.id === id);
+    todolist.map(item => {
+      if (item.name === value) {
+        console.warn('this is a duplicate item');
+      }
+    })
 
+  }
 
   return (
     <div className="App" >
       <Header />
-      <Table addNewItem={addNewToDoListItem} todolist={todolist} />
+      <Table addNewItem={addNewToDoListItem} todolist={todolist} validateItem={validateItem} />
 
     </div>
   );
