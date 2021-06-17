@@ -5,14 +5,12 @@ import { render } from 'react-dom';
 const TableText = (props) => {
   return (
     // via https://material-ui.com/components/text-fields/
-    <form className={props.name} noValidate autoComplete="off">
-      <Input onKeyPress={(event) => {
-        if (event.key === 'Enter')
-          props.validateItem(event.target.value, props.id);
-      }}
-        placeholder="Enter task"
-        inputProps={{ 'aria-label': 'description' }} />
-    </form>
+    <Input onKeyPress={(event) => {
+      if (event.key === 'Enter')
+        props.validateItem(event.target.value, props.id);
+    }}
+      placeholder="Enter task"
+      inputProps={{ 'aria-label': 'description' }} />
   )
 };
 

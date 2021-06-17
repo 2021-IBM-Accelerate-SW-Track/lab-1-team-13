@@ -34,12 +34,25 @@ const App = () => {
 
   const validateItem = (value, id) => {
     let newItem = todolist.find(item => item.id === id);
-    todolist.map(item => {
-      if (item.name === value) {
-        console.warn('this is a duplicate item');
+    newItem.name = value;
+    let flag = 0;
+    todolist.forEach(item => {
+      if (item.id !== id && item.name === value) {
+        window.alert('this is a duplicate item');
+        flag = 1;
       }
     })
 
+    if (flag === 0) {
+      let newList = todolist.map(item => {
+        if (item.id === id) {
+          item.name = value;
+          return item
+        }
+        return item
+      })
+      updatetodolist(newList)
+    }
   }
 
   return (
