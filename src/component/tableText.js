@@ -18,7 +18,7 @@ const TableText = (props) => {
 
             <Input onBlur={handleChangeInput} />
             :
-            <p onClick={() => editDesc(true)}> {props.name} </p>
+            <div onClick={() => editDesc(true)}> {props.name} </div>
 
     )
 };

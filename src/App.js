@@ -10,12 +10,20 @@ const App = () => {
 
 
   const makeNewToDoListItem = (newdesc) => {
-    let currentDate = new Date();
-    let time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
+    let current = new Date();
+    var hours = current.getHours();
+    var minutes = current.getMinutes();
+    var ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+    let cDate = (current.getMonth() + 1) + '-' + current.getDate() + '-' + current.getFullYear();
+    let dateTime = strTime + ' ' + cDate;
     setID(currID + 1);
     let newToDoListItem = {
       id: currID,
-      date: time,
+      date: dateTime,
       name: newdesc,
       status: 'incomplete',
     }
