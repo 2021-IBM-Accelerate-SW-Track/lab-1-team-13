@@ -3,15 +3,24 @@ import { Input } from '@material-ui/core';
 import { render } from 'react-dom';
 
 const TableText = (props) => {
-  return (
-    // via https://material-ui.com/components/text-fields/
-    <Input onKeyPress={(event) => {
-      if (event.key === 'Enter')
-        props.validateItem(event.target.value, props.id);
-    }}
-      placeholder="Enter task"
-      inputProps={{ 'aria-label': 'description' }} />
-  )
+
+    const [editing, editDesc] = useState(false);
+
+    const handleChangeInput = (e) => {
+        props.editItem(props.id, e.target.value);
+        props.validateItem(e.target.value, props.id);
+        editDesc(false);
+    }
+
+    return (
+        // via https://material-ui.com/components/text-fields/
+        editing ?
+
+            <Input onBlur={handleChangeInput} />
+            :
+            <p onClick={() => editDesc(true)}> {props.name} </p>
+
+    )
 };
 
 export default TableText;

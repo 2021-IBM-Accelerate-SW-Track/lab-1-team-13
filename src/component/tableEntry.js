@@ -10,7 +10,7 @@ const TableEntry = (props) => {
           <Checkbox onClick={() => props.markComplete(props.item)} />
         </Grid>
         <Grid item xs={2}>
-          <TableText name={props.item.name} validateItem={props.validateItem} id={props.item.id} />
+          <TableText editItem={props.editItem} name={props.item.name} validateItem={props.validateItem} id={props.item.id} />
         </Grid>
         <Grid item xs={2}>
           {props.item.date}
