@@ -6,7 +6,6 @@ const Table = (props) => {
   const items = props.todolist ? props.todolist : null;
 
   const markComplete = (item) => {
-    console.log(String('statusText' + item.id));
     if (item.status === 'incomplete') {
       item.status = 'complete';
       document.getElementById(String('statusText' + item.id)).innerHTML = 'complete';
@@ -16,12 +15,11 @@ const Table = (props) => {
     }
   }
 
-  console.log(props.todolist);
   return (
     items ? <div> <Button onClick={props.addNewItem}>Add New Item</Button>
       {
         items.map((item, index) => (
-          <TableEntry key={item.id} item={item} markComplete={markComplete} validateItem={props.validateItem} />
+          <TableEntry deleteItem={props.deleteItem} key={item.id} item={item} markComplete={markComplete} validateItem={props.validateItem} />
         ))
       }
     </div> : <div> <Button onClick={props.addNewItem}>Add New Item</Button> </div>
