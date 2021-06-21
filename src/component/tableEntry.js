@@ -1,25 +1,30 @@
 import React, { useState } from 'react';
-import { Grid, Checkbox } from '@material-ui/core';
+import { Grid, Checkbox, TextField, Button } from '@material-ui/core';
+import TableText from "./tableText.js";
 
 const TableEntry = (props) => {
-  console.log(props.item);
   return (
     <>
       <Grid container item xs={12} spacing={1}>
-        <Grid item xs={1}>
+        <Grid item xs={2}>
           <Checkbox onClick={() => props.markComplete(props.item)} />
         </Grid>
-        <Grid item xs={4}>
-          {props.item.name}
+        <Grid item xs={2}>
+          <TableText name={props.item.name} validateItem={props.validateItem} id={props.item.id} />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2}>
           {props.item.date}
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={2}>
           <div id={`statusText${props.item.id}`}>
             {props.item.status}
           </div>
         </Grid>
+        <Grid>
+          <Button onClick={() => props.deleteItem(props.item.id)}> Delete </Button>
+        </Grid>
+
+
       </Grid>
     </>
   )
