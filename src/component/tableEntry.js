@@ -10,15 +10,13 @@ const TableEntry = (props) => {
           <Checkbox onClick={() => props.markComplete(props.item)} />
         </Grid>
         <Grid item xs={2}>
-          <TableText name={props.item.name} validateItem={props.validateItem} id={props.item.id} />
+          <TableText editItem={props.editItem} name={props.item.name} validateItem={props.validateItem} id={props.item.id} />
         </Grid>
         <Grid item xs={2}>
           {props.item.date}
         </Grid>
-        <Grid item xs={2}>
-          <div id={`statusText${props.item.id}`}>
-            {props.item.status}
-          </div>
+        <Grid id={`statusText${props.item.id}`} item xs={2}>
+          {props.item.status}
         </Grid>
         <Grid>
           <Button onClick={() => props.deleteItem(props.item.id)}> Delete </Button>
